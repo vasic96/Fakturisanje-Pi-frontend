@@ -1,0 +1,66 @@
+<form #registracijaForm="ngForm" (ngSubmit)="onSubmit(registracijaForm.value)">
+  <div class="form-group">
+    <label for="naziv">Naziv Preduzeca:</label>
+    <input type="text" required name="naziv" class="form-control" id="naziv" placeholder="Naziv Preduzeca" ngModel>
+  </div>
+
+  <div class="form-group">
+    <label for="adresa">Adresa:</label>
+    <input type="text" required name="adresa" class="form-control" id="adresa" placeholder="Adresa preduzeca" ngModel>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="pib">Pib:</label>
+      <input type="text" required name="pib" class="form-control" id="pib" placeholder="pib" ngModel>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="telefon">Telefon:</label>
+      <input type="text" required name="telefon" class="form-control" id="telefon" placeholder="Telefon" ngModel>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">Email:</label>
+      <input type="email" required name="email" class="form-control" id="email" placeholder="email" ngModel>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="password">Password:</label>
+      <input type="password" required maxlenght="15" minlenght="5" name="password" class="form-control" id="password" placeholder="password" ngModel>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="tip">Tip</label>
+      <input type="text" required name="tip" class="form-control" id="tip" placeholder="Tip preduzeca" ngModel>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="logo">logo:</label>
+      <input type="text" required name="logo" class="form-control" id="logo" placeholder="Logo" ngModel>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="mestoId">Mesto:</label>
+    <select required class="custom-select" name="mestoId" id="mestoId" ngModel>
+        <option *ngFor="let mesto of mesta" [value]="mesto.id">{{mesto.grad}}</option>
+      </select>
+  </div>
+  
+
+
+  <div class="form-row text-center">
+    <div class="col-6">
+      <button type="submit" [disabled]="!registracijaForm.form.valid" class="btn btn-primary">Sign up</button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-success" (click)="toLogin()">Login</button>
+    </div>
+  </div>
+
+
+
+</form>
