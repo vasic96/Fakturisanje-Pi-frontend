@@ -1,0 +1,57 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Drzava</th>
+      <th>Grad</th>
+      <th>Brisanje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mesto of mesta">
+      <td>{{mesto.grad}}</td>
+      <td>{{mesto.drzava}}</td>
+      <td>                    
+        <button (click)="izbrisiMesto(mesto)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+<br>
+
+<button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mestoModal">
+    Dodavanje mesta
+  </button>
+   
+  <!-- Modal -->
+  <div id="mestoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Novo mesto</h5>
+          <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form #mestoForma="ngForm" (ngSubmit)="onSubmitMesto(mestoForma.value)">
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="grad">Grad:</label>
+              <input type="text" required name="grad" class="form-control" id="grad" placeholder="Grad" ngModel>
+            </div>
+          
+            <div class="form-group">
+              <label for="drzava">Drzava:</label>
+              <input type="text" required name="drzava" class="form-control" id="drzava" placeholder="Drzava" ngModel>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" [disabled]="!mestoForma.form.valid" class="btn btn-primary">Dodaj</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>

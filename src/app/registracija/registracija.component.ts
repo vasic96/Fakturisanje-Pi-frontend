@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MestoService } from '../mesto.service';
 import { RegistracijaService } from '../registracija.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-registracija',
@@ -22,15 +23,26 @@ export class RegistracijaComponent implements OnInit {
   dajSvaMesta(){
     this.mestoService.svaMesta().subscribe(
       data => this.mesta = data,
-      error => alert("Jebe")
+      error => alert("Ucitavanje mesta nije uspelo")
     )
   }
 
   onSubmit(preduzece){
-    console.log(preduzece);
+    console.log(preduzece)
     this.registracijaService.registracija(preduzece).subscribe(
       data => alert("Registracija uspesna!"),
-      error => alert("Nesto jebe")
+      error => alert("Greska prilikom registracije")
+    )
+  }
+
+  onSubmitMesto(mesto){
+    console.log(mesto)
+    this.mestoService.dodajMesto(mesto).subscribe(
+      success => alert("Mesto dodato"),
+      error => {
+        alert("Greska u dodavanju mesta");
+        this.dajSvaMesta();
+    }
     )
   }
 
