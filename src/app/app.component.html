@@ -18,7 +18,7 @@
           <a class="nav-link" href="#">Fakture</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mesto</a>
+          <a class="nav-link" routerLink="/mesta" href="#">Mesto</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Jedinica Mere</a>
@@ -38,16 +38,17 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Prijava</button>
         </li>
         <li class="nav-item">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" routerLink="/registracija" type="submit">Registracija</button>
         </li>
 
       </ul>
 
     </div>
   </nav>
-
+  </div>
+<div class="container">
   <router-outlet></router-outlet>
 </div>
