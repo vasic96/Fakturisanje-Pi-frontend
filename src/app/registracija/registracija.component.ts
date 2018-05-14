@@ -35,15 +35,4 @@ export class RegistracijaComponent implements OnInit {
     )
   }
 
-  onSubmitMesto(mesto){
-    console.log(mesto)
-    this.mestoService.dodajMesto(mesto).subscribe(
-      success => alert("Mesto dodato"),
-      error => {
-        alert("Greska u dodavanju mesta");
-        this.dajSvaMesta();
-    }
-    )
-  }
-
 }

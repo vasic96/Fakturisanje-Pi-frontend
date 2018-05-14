@@ -1,16 +1,17 @@
+<br>
 <table class="table">
-  <thead class="thead table-info">
+  <thead class="thead table-success">
     <tr>
-      <th>Drzava</th>
       <th>Grad</th>
-      <th>Brisanje</th>
+      <th class="text-center">Drzava</th>
+      <th class="text-right">Brisanje</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let mesto of mesta">
       <td>{{mesto.grad}}</td>
-      <td>{{mesto.drzava}}</td>
-      <td>                    
+      <td class="text-center">{{mesto.drzava}}</td>
+      <td class="text-right">                    
         <button (click)="izbrisiMesto(mesto)" class="btn btn-danger">Delete</button>
       </td>
     </tr>
@@ -19,6 +20,7 @@
 
 
 <br>
+<hr>
 <br>
 
 <button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mestoModal">
@@ -29,8 +31,8 @@
   <div id="mestoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Novo mesto</h5>
+        <div class="modal-header bg-success">
+          <h5 class="modal-title text-white">Novo mesto</h5>
           <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -48,8 +50,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" [disabled]="!mestoForma.form.valid" class="btn btn-primary">Dodaj</button>
+          <button type="submit" [disabled]="!mestoForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+          <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
         </div>
       </form>
       </div>

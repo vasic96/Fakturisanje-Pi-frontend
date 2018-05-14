@@ -1,0 +1,27 @@
+  <br>
+  <br>
+  
+  <div class="list-group" *ngFor="let preduzece of preduzeca">
+      <div> 
+      <div class="card">
+          <div class="card-header d-flex w-100 justify-content-between bg-success">
+            <h4 class="text-white">{{preduzece.naziv}}</h4>
+            <a href="/mesta" class="text-right"><small class="text-white">{{preduzece.gradDrzava}}</small></a>
+          </div>
+         
+          <div class="card-body">
+      <h5>{{preduzece.adresa}} &nbsp;&nbsp;<span class="badge badge-success">Adresa</span></h5>
+      <hr/>
+      <h5>{{preduzece.pib}} &nbsp;&nbsp;<span class="badge badge-success">PIB</span></h5>
+      <hr/>
+      <h5>Neki tip &nbsp;&nbsp;<span class="badge badge-success">Tip</span></h5>
+      <hr/>
+      <div class="d-flex w-100 justify-content-between">
+      <h5>{{preduzece.email}} &nbsp;&nbsp;<span class="badge badge-success">Email</span></h5>
+      <h5 class="text-right">{{preduzece.telefon}} &nbsp;&nbsp;<span class="badge badge-success">Telefon</span></h5>
+      </div>
+
+    </div>
+    </div>
+    <br>
+    </div>
