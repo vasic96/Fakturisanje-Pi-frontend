@@ -1,0 +1,59 @@
+<br>
+<table class="table">
+  <thead class="thead table-success">
+    <tr>
+      <th>Godina</th>
+      <th class="text-center">Zakljuceno</th>
+      <th class="text-right">Brisanje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let poslovnaGodina of poslovneGodine">
+      <td>{{poslovnaGodina.godina}}</td>
+      <td class="text-center">{{poslovnaGodina.zakljucena}}</td>
+      <td class="text-right">                    
+        <button (click)="izbrisiPoslovnuGodinu(poslovnaGodina)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+<hr>
+<br>
+
+<button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#poslovnaGodinaModal">
+  Dodavanje Poslovne Godine ^^
+</button>
+  
+<!-- Modal -->
+<div id="poslovnaGodinaModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-white">Nova Poslovna Godina ^^</h5>
+        <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form #poslovnaGodinaForma="ngForm" (ngSubmit)="onSubmitPoslovnaGodina(poslovnaGodinaForma.value)">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="datumVazenja">Godina:</label>
+            <input type="text" required name="godina" class="form-control" id="godina" placeholder="Godina" ngModel>
+          </div>
+        
+          <div class="form-group">
+            <label for="zakljucena">Zakljucena:</label>
+            <input type="text" required name="zakljucena" class="form-control" id="zakljucena" placeholder="Zakljucena" ngModel>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" [disabled]="!poslovnaGodinaForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+        <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

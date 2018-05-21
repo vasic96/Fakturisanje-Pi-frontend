@@ -10,7 +10,7 @@
   <tbody>
     <tr *ngFor="let cenovnik of cenovnici">
       <td>{{cenovnik.datumVazenja}}</td>
-      <td class="text-center">{{cenovnik.preduzece}}</td>
+      <td class="text-center">{{cenovnik.preduzeceIme}}</td>
       <td class="text-right">                    
         <button (click)="izbrisiMesto(mesto)" class="btn btn-danger">Delete</button>
       </td>
@@ -46,7 +46,7 @@
         
           <div class="form-group">
             <label for="preduzece">Preduzece:</label>
-            <input type="text" required name="preduzece" class="form-control" id="preduzece" placeholder="Preduzece" ngModel>
+            <input type="text" required name="preduzece" class="form-control" id="preduzeceIme" placeholder="Preduzece" ngModel>
           </div>
       </div>
       <div class="modal-footer">

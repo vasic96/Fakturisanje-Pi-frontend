@@ -12,6 +12,8 @@ import { MestoService } from './mesto.service';
 import { PreduzeceService } from './preduzece.service';
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { CenovnikService } from './cenovnik.service';
+import { PoslovnaGodinaComponent } from './poslovna-godina/poslovna-godina.component';
+import { PoslovnaGodinaService } from './poslovna-godina.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { CenovnikService } from './cenovnik.service';
     RegistracijaComponent,
     MestaComponent,
     PreduzeceListComponent,
-    CenovnikComponent
+    CenovnikComponent,
+    PoslovnaGodinaComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { CenovnikService } from './cenovnik.service';
     FormsModule
     
   ],
-  providers: [RegistracijaService,MestoService,PreduzeceService,CenovnikService],
+  providers: [RegistracijaService,MestoService,PreduzeceService,CenovnikService,PoslovnaGodinaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
