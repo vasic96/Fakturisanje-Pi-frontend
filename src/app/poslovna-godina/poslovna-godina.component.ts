@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CenovnikService } from '../cenovnik.service';
 import * as $ from 'jquery';
-import { Poslovna_Godina } from '../model/Poslovna_Godina';
 import { PoslovnaGodinaService } from '../poslovna-godina.service';
 
 @Component({
@@ -18,7 +17,7 @@ export class PoslovnaGodinaComponent implements OnInit {
   }
   @ViewChild('poslovnaGodinaModal') public modal;
 
-  poslovneGodine = []
+  poslovneGodine;
 
   dajSvePoslovneGodine(){
     this.poslovnaGodinaService.svePoslovneGodine().subscribe(
@@ -40,7 +39,7 @@ export class PoslovnaGodinaComponent implements OnInit {
     )
   }
 
-  izbrisiPoslovnuGodinu(poslovnaGodina: Poslovna_Godina){
+  izbrisiPoslovnuGodinu(poslovnaGodina){
     if(confirm("Da li zelite da izbrisete " + poslovnaGodina.godina + " ?")){
       this.poslovnaGodinaService.izbrisiPoslovnuGodinu(poslovnaGodina.id).subscribe(
         success => this.dajSvePoslovneGodine(),

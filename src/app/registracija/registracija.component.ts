@@ -18,7 +18,7 @@ export class RegistracijaComponent implements OnInit {
   }
 
   
-  mesta = []
+  mesta;
 
   dajSvaMesta(){
     this.mestoService.svaMesta().subscribe(

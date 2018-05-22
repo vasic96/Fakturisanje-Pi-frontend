@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
 import { HttpClient } from '@angular/common/http';
-import { Poslovna_Godina } from './model/Poslovna_Godina';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class PoslovnaGodinaService {
   dodajPoslovnuGodinuUrl = "http://localhost:8080/api/pgodina/add";
   izbrisiPoslovnuGodinuUrl = "http://localhost:8080/api/pgodina/delete/";
   svePoslovneGodine(){
-    return this._http.get<Poslovna_Godina[]>(this.svePoslovneGodineUrl);
+    return this._http.get(this.svePoslovneGodineUrl);
   }
 
   dodajPoslovnuGodinu(poslovnaGodina){

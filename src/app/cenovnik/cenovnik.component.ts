@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CenovnikService } from '../cenovnik.service';
 import * as $ from 'jquery';
-import { Cenovnik } from '../model/Cenovnik';
 
 @Component({
   selector: 'app-cenovnik',
@@ -18,7 +17,7 @@ export class CenovnikComponent implements OnInit {
   }
   @ViewChild('cenovnikModal') public modal;
 
-  cenovnici = []
+  cenovnici;
 
   dajSveCenovnike(){
     this.cenovnikService.sviCenovnici().subscribe(
@@ -40,7 +39,7 @@ export class CenovnikComponent implements OnInit {
     )
   }
 
-  izbrisiCenovnik(cenovnik: Cenovnik){
+  izbrisiCenovnik(cenovnik){
     if(confirm("Da li zelite da izbrisete " + cenovnik.preduzeceIme + " ?")){
       this.cenovnikService.izbrisiCenovnik(cenovnik.id).subscribe(
         success => this.dajSveCenovnike(),

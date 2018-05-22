@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MestoService } from '../mesto.service';
 import * as $ from 'jquery';
-import { Mesto } from '../model/Mesto';
 
 @Component({
   selector: 'app-mesta',
@@ -18,7 +17,7 @@ export class MestaComponent implements OnInit {
   }
   @ViewChild('mestoModal') public modal;
 
-  mesta = []
+  mesta;
 
   dajSvaMesta(){
     this.mestoService.svaMesta().subscribe(
@@ -40,7 +39,7 @@ export class MestaComponent implements OnInit {
     )
   }
 
-  izbrisiMesto(mesto: Mesto){
+  izbrisiMesto(mesto){
     if(confirm("Da li zelite da izbrisete " + mesto.grad + " ?")){
       this.mestoService.izbrisiMesto(mesto.id).subscribe(
         success => this.dajSvaMesta(),

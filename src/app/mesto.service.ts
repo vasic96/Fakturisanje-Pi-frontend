@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
 import { HttpClient } from '@angular/common/http';
-import { Mesto } from './model/Mesto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class MestoService {
   dodajMestoUrl = "http://localhost:8080/api/mesto/add";
   izbrisiMestoUrl = "http://localhost:8080/api/mesto/izbrisi/";
   svaMesta(){
-    return this._http.get<Mesto[]>(this.svaMestaUrl);
+    return this._http.get(this.svaMestaUrl);
   }
 
   dodajMesto(mesto){

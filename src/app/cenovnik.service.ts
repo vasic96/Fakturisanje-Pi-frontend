@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
 import { HttpClient } from '@angular/common/http';
-import { Cenovnik } from './model/Cenovnik';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class CenovnikService {
   dodajCenovnikUrl = "http://localhost:8080/api/cenovnik/add";
   izbrisiCenovnikUrl = "http://localhost:8080/api/cenovnik/delete/";
   sviCenovnici(){
-    return this._http.get<Cenovnik[]>(this.sviCenovniciUrl);
+    return this._http.get(this.sviCenovniciUrl);
   }
 
   dodajCenovnik(cenovnik){

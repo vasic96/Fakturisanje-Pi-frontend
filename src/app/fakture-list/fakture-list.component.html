@@ -1,0 +1,82 @@
+<br>
+<table class="table">
+  <thead class="thead table-success">
+    <tr>
+      <th>Preduzece</th>
+      <th>Poslovni partner</th>
+      <th>Poslovna godina</th>
+      <th>Datum fakture</th>
+      <th>Iznos za placanje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let faktura of fakture">
+      <td>{{faktura.preduzeceNaziv}}</td>
+      <td>{{faktura.poslovniPartnerNaziv}}</td>
+      <td>{{faktura.poslovnaGodina}}</td>
+      <td>{{faktura.datumFakture}}</td>
+      <td>{{faktura.iznosZaPlacanje}}</td>
+      <!-- <td class="text-right">                    
+        <button class="btn btn-danger">Delete</button>
+      </td> -->
+    </tr>
+  </tbody>
+</table>
+
+
+<button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mestoModal">
+  Nova faktura
+</button>
+
+<!-- Modal -->
+<div id="mestoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-white">Nova faktura</h5>
+        <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form #fakturaForma="ngForm" (ngSubmit)="onSubmitFaktura(fakturaForma.value)">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="datumFakture">Datum fakture</label>
+            <input type="date" required name="datumFakture" class="form-control" id="datumFakture" placeholder="datumFakture" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="datumValute">Datum Valute</label>
+            <input type="date" required name="datumValute" class="form-control" id="datumValute" placeholder="datumValute" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" required minlength="2" maxlength="2" name="status" class="form-control" id="status" placeholder="status" ngModel>
+          </div>
+        <div class="form-group">
+            <label for="preduzeceId">Preduzece:</label>
+            <select required class="custom-select" name="preduzeceId" id="preduzeceId" ngModel>
+                <option *ngFor="let preduzece of preduzeca" [value]="preduzece.id">{{preduzece.naziv}}</option>
+              </select>
+          </div>
+      <div class="form-group">
+        <label for="poslovniPartnerId">Poslovni Partner:</label>
+        <select required class="custom-select" name="poslovniPartnerId" id="poslovniPartnerId" ngModel>
+            <option *ngFor="let poslovniPartner of partneri" [value]="poslovniPartner.id">{{poslovniPartner.naziv}}</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="poslovnaGodinaId">Poslovna Godina:</label>
+        <select required class="custom-select" name="poslovnaGodinaId" id="poslovnaGodinaId" ngModel>
+            <option *ngFor="let poslovnaGodina of godine" [value]="poslovnaGodina.id">{{poslovnaGodina.godina}}</option>
+          </select>
+      </div>
+      
+  </div>
+      <div class="modal-footer">
+        <button type="submit" [disabled]="!fakturaForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+        <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

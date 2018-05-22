@@ -5,13 +5,15 @@ import { MestaComponent } from './mesta/mesta.component';
 import { PreduzeceListComponent } from './preduzece-list/preduzece-list.component';
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { PoslovnaGodinaComponent } from './poslovna-godina/poslovna-godina.component';
+import { FaktureListComponent } from './fakture-list/fakture-list.component';
 
 const routes: Routes = [
   {path: 'registracija',component:RegistracijaComponent},
   {path:'mesta',component:MestaComponent},
   {path:'preduzeca',component:PreduzeceListComponent},
   {path:'cenovnik',component:CenovnikComponent},
-  {path: 'poslovna_godina',component:PoslovnaGodinaComponent}
+  {path: 'poslovna_godina',component:PoslovnaGodinaComponent},
+  {path: 'fakture',component:FaktureListComponent}
 ];
 
 @NgModule({
