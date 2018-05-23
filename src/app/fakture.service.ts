@@ -8,7 +8,7 @@ export class FaktureService {
 
   constructor(private _http: HttpClient) { }
 
-  sveFaktureUrl = "http://localhost:8080/api/fakture/all";
+  sveFaktureUrl = "http://localhost:8080/api/fakture/all/";
   dodajFakturuUrl = "http://localhost:8080/api/fakture/add";
 
   sveFakture(){
@@ -17,6 +17,10 @@ export class FaktureService {
 
   dodajFakturu(faktura){
     return this._http.post(this.dodajFakturuUrl,faktura);
+  }
+
+  fakturaPoId(id){
+    return this._http.get(this.sveFaktureUrl + id);
   }
 
 }

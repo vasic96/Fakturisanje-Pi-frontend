@@ -1,0 +1,61 @@
+<br>
+<br>
+
+
+<div class="card" *ngIf="done">
+  <div class="card-header d-flex w-100 justify-content-between bg-success">
+    <h4 class="text-white">Br fakture: {{faktura.id}}.</h4>
+    <h5 class="text-center text-white">{{faktura.poslovnaGodina}}</h5>
+    <h5 class="text-right text-white">{{faktura.datumFakture}}</h5>
+  </div>
+  <div class="card-body">
+    <h6>Stavke fakture:</h6>
+
+    <table class="table">
+      <thead class="thead">
+        <th>Roba</th>
+        <th>kolicina</th>
+        <th>cena</th>
+        <th>rabat</th>
+        <th>pdv %</th>
+        <th>ukupno</th>
+      </thead>
+      <tbody>
+        <tr>
+         <td>Roba 1</td>
+         <td>10</td>
+         <td>100</td>
+         <td>5</td>
+         <td>10</td>
+         <td>105</td>
+        </tr>   
+      </tbody>
+    </table>
+    <hr>
+    <div class="d-flex w-100 justify-content-between">
+      <h5>{{faktura.poslovniPartnerNaziv}} &nbsp;&nbsp;
+        <span class="badge badge-success">Poslovni partner</span>
+      </h5>
+      <h5 class="text-right">{{faktura.datumValute}} &nbsp;&nbsp;
+        <span class="badge badge-success">Datum valute</span>
+      </h5>
+    </div>
+    <hr>
+    <div class="d-flex w-100 justify-content-between">
+      <h5>{{faktura.osnovica}} &nbsp;&nbsp;
+        <span class="badge badge-success">Osnovica</span>
+      </h5>
+      <h5 class="text-center">{{faktura.ukupanPDV}} &nbsp;&nbsp;
+        <span class="badge badge-success">Ukupan PDV</span>
+      </h5>
+      <h5 class="text-right">{{faktura.iznosZaPlacanje}} &nbsp;&nbsp;
+        <span class="badge badge-success">Ukupan iznos</span>
+      </h5>
+    </div>
+    <hr>
+    <button class="btn btn-success">Dodaj stavku</button>
+
+
+  </div>
+</div>
+<br>

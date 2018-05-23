@@ -7,6 +7,7 @@
       <th>Poslovna godina</th>
       <th>Datum fakture</th>
       <th>Iznos za placanje</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,18 @@
       <td>{{faktura.poslovnaGodina}}</td>
       <td>{{faktura.datumFakture}}</td>
       <td>{{faktura.iznosZaPlacanje}}</td>
+      <td>
+          <div class="dropdown">
+              <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Opcije
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/fakture/{{faktura.id}}">Detalji i stavke</a>
+                <a class="dropdown-item" href="#">Stampaj</a>
+                <a class="dropdown-item" href="#">Izbrisi</a>
+              </div>
+            </div>
+      </td>
       <!-- <td class="text-right">                    
         <button class="btn btn-danger">Delete</button>
       </td> -->

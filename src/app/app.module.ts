@@ -17,6 +17,7 @@ import { PoslovnaGodinaService } from './poslovna-godina.service';
 import { FaktureListComponent } from './fakture-list/fakture-list.component';
 import { FaktureService } from './fakture.service';
 import { PoslovniPartnerService } from './poslovni-partner.service';
+import { FakturaComponent } from './faktura/faktura.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PoslovniPartnerService } from './poslovni-partner.service';
     PreduzeceListComponent,
     CenovnikComponent,
     PoslovnaGodinaComponent,
-    FaktureListComponent
+    FaktureListComponent,
+    FakturaComponent
   ],
   imports: [
     BrowserModule,
