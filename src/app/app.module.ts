@@ -19,6 +19,8 @@ import { FaktureService } from './fakture.service';
 import { PoslovniPartnerService } from './poslovni-partner.service';
 import { FakturaComponent } from './faktura/faktura.component';
 import { StavkeCenovnikaService } from './stavke-cenovnika.service';
+import { CustomFormsModule } from 'ng4-validators';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { StavkeCenovnikaService } from './stavke-cenovnika.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule 
+    
     
   ],
   providers: [RegistracijaService,MestoService,PreduzeceService,CenovnikService,PoslovnaGodinaService,FaktureService,PoslovniPartnerService
