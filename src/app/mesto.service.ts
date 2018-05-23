@@ -9,7 +9,7 @@ export class MestoService {
 
   constructor(private _http: HttpClient) { }
   svaMestaUrl = "http://localhost:8080/open/mesto/all";
-  dodajMestoUrl = "http://localhost:8080/open/mesto/add";
+  dodajMestoUrl = "http://localhost:8080/api/mesto/add";
   izbrisiMestoUrl = "http://localhost:8080/api/mesto/izbrisi/";
   svaMesta(){
     return this._http.get(this.svaMestaUrl);
