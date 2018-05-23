@@ -21,6 +21,9 @@ import { FakturaComponent } from './faktura/faktura.component';
 import { StavkeCenovnikaService } from './stavke-cenovnika.service';
 import { CustomFormsModule } from 'ng4-validators';
 import { MyHttpInterceptor } from './my-http-interceptor';
+import { RobaComponent } from './roba/roba.component';
+import { GrupaRobeComponent } from './grupa-robe/grupa-robe.component';
+
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { MyHttpInterceptor } from './my-http-interceptor';
     CenovnikComponent,
     PoslovnaGodinaComponent,
     FaktureListComponent,
-    FakturaComponent
+    FakturaComponent,
+    RobaComponent,
+    GrupaRobeComponent
   ],
   imports: [
     BrowserModule,

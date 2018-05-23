@@ -7,6 +7,8 @@ import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { PoslovnaGodinaComponent } from './poslovna-godina/poslovna-godina.component';
 import { FaktureListComponent } from './fakture-list/fakture-list.component';
 import { FakturaComponent } from './faktura/faktura.component';
+import { GrupaRobeComponent} from './grupa-robe/grupa-robe.component'
+import { RobaComponent } from './roba/roba.component';
 
 const routes: Routes = [
   {path: 'registracija',component:RegistracijaComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path: 'poslovna_godina',component:PoslovnaGodinaComponent},
   {path: 'fakture',component:FaktureListComponent},
   {path: '',redirectTo:'/preduzeca',pathMatch:'full'},
-  {path: 'fakture/:id',component:FakturaComponent}
+  {path: 'fakture/:id',component:FakturaComponent},
+  {path:'grupaRobe', component:GrupaRobeComponent},
+  {path: 'roba', component:RobaComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,60 @@
+<br>
+<table class="table">
+  <thead class="thead table-success">
+    <tr>
+      <th>Roba</th>
+      <th class="text-right">Brisanje</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let roba of r">
+  <td>{{roba.naziv}}</td>
+ <td class="text-right">
+    <button (click)="izbrisiRobu(roba)" class="btn btn-danger">Delete</button>
+
+ </td>
+</tr>
+</tbody>
+</table>
+
+<button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#dodavanjeRobe">
+  Dodavanje Robe
+</button>
+
+<div id="dodavanjeRobe" class="modal fade" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success">
+          <h5 class="modal-title text-white">Roba</h5>
+          <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+    
+    
+</div>
+
+<form #GrupaRobeForma="ngForm" (ngSubmit)="onSubmitGrupaRobe(GrupaRobeForma.value)">
+    <div class="modal-body">
+       
+      <div class="form-group">
+          <label for="grupaRobe">Roba: </label>
+          <input type="text" required name="grupaRobe" class="form-control" id="grupaRobe" placeholder="Roba" ngModel>
+        </div>
+
+        <div ng-controller="grupaRobe" class="dropdown">
+            <label for="pdv">Grupa Robe</label>
+            <select ng-model="selectedName"  class="form-control" id="grupaRobe.naziv">
+                <option value="grupaRobe.pdv" selected disabled hidden id="grupaRobe">Grupa Robe</option>
+            </select>
+        </div>
+    
+    </div>
+    <div class="modal-footer">
+      <button type="submit" [disabled]="!GrupaRobeForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+      <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+    </div>
+  </form>
+</div>
+</div>
+
+</div>
