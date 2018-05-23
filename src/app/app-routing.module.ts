@@ -15,6 +15,7 @@ const routes: Routes = [
   {path:'cenovnik',component:CenovnikComponent},
   {path: 'poslovna_godina',component:PoslovnaGodinaComponent},
   {path: 'fakture',component:FaktureListComponent},
+  {path: '',redirectTo:'/preduzeca',pathMatch:'full'},
   {path: 'fakture/:id',component:FakturaComponent}
 ];
 

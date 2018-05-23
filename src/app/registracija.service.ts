@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,21 @@ export class RegistracijaService {
 
   constructor(private _http: HttpClient) { }
 
-  registracijaUrl = "http://localhost:8080/api/preduzece/dodaj";
+  registracijaUrl = "http://localhost:8080/sign-up";
+  loginUrl = "http://localhost:8080/login";
+  urlLogout = "http://localhost:8080/logout";
 
   registracija(preduzece){
     return this._http.post(this.registracijaUrl,preduzece);
+  }
+
+  login(loginData){
+    let contentHeader = new HttpHeaders();
+    return this._http.post(this.loginUrl,loginData,{ headers: contentHeader, observe: 'response' });
+  }
+  
+  logOut(){
+    return this._http.get(this.urlLogout);
   }
 
 }

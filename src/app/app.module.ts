@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistracijaComponent } from './registracija/registracija.component';
@@ -20,6 +20,7 @@ import { PoslovniPartnerService } from './poslovni-partner.service';
 import { FakturaComponent } from './faktura/faktura.component';
 import { StavkeCenovnikaService } from './stavke-cenovnika.service';
 import { CustomFormsModule } from 'ng4-validators';
+import { MyHttpInterceptor } from './my-http-interceptor';
 
 
 @NgModule({
@@ -43,7 +44,11 @@ import { CustomFormsModule } from 'ng4-validators';
     
   ],
   providers: [RegistracijaService,MestoService,PreduzeceService,CenovnikService,PoslovnaGodinaService,FaktureService,PoslovniPartnerService
-              ,StavkeCenovnikaService],
+              ,StavkeCenovnikaService,{
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: MyHttpInterceptor,
+                    multi: true
+                  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

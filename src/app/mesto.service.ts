@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class MestoService {
 
   constructor(private _http: HttpClient) { }
-  svaMestaUrl = "http://localhost:8080/api/mesto/all";
-  dodajMestoUrl = "http://localhost:8080/api/mesto/add";
+  svaMestaUrl = "http://localhost:8080/open/mesto/all";
+  dodajMestoUrl = "http://localhost:8080/open/mesto/add";
   izbrisiMestoUrl = "http://localhost:8080/api/mesto/izbrisi/";
   svaMesta(){
     return this._http.get(this.svaMestaUrl);

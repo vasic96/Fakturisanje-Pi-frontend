@@ -84,12 +84,12 @@
               <div class="form-group">
                 <label for="kolicina">Kolicina</label>
                 <input type="number" required min="1" name="kolicina" class="form-control" id="kolicina" placeholder="Unesite kolicinu"
-                  ngModel>
+                  ngModel [min]="1">
               </div>
               <div class="form-group">
-                <label for="rabat">rabat</label>
+                <label for="rabat">Rabat (0% - 90%)</label>
                 <input type="number" min="1" max="100" required name="rabat" class="form-control" id="rabat" placeholder="Unesite rabat"
-                  ngModel>
+                  ngModel [range]="[0,90]">
               </div>
 
             </div>
