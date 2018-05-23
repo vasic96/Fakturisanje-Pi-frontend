@@ -18,6 +18,7 @@ import { FaktureListComponent } from './fakture-list/fakture-list.component';
 import { FaktureService } from './fakture.service';
 import { PoslovniPartnerService } from './poslovni-partner.service';
 import { FakturaComponent } from './faktura/faktura.component';
+import { StavkeCenovnikaService } from './stavke-cenovnika.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FakturaComponent } from './faktura/faktura.component';
     FormsModule
     
   ],
-  providers: [RegistracijaService,MestoService,PreduzeceService,CenovnikService,PoslovnaGodinaService,FaktureService,PoslovniPartnerService],
+  providers: [RegistracijaService,MestoService,PreduzeceService,CenovnikService,PoslovnaGodinaService,FaktureService,PoslovniPartnerService
+              ,StavkeCenovnikaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

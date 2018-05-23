@@ -14,21 +14,27 @@
     <table class="table">
       <thead class="thead">
         <th>Roba</th>
-        <th>kolicina</th>
-        <th>cena</th>
-        <th>rabat</th>
-        <th>pdv %</th>
-        <th>ukupno</th>
+        <th>Jedinicna cena</th>
+        <th>Kolicina</th>
+        <th>Cena</th>
+        <th>Rabat %</th>
+        <th>Cena ( - Rabat )</th>
+        <th>PDV %</th>
+        <th>Ukupan PDV</th>
+        <th>Ukupno</th>
       </thead>
       <tbody>
-        <tr>
-         <td>Roba 1</td>
-         <td>10</td>
-         <td>100</td>
-         <td>5</td>
-         <td>10</td>
-         <td>105</td>
-        </tr>   
+        <tr *ngFor="let stavkaF of stavkeFakture">
+          <td>{{stavkaF.robaNaziv}}</td>
+          <td>{{stavkaF.jedinicnaCena}}</td>
+          <td>x {{stavkaF.kolicina}}</td>
+          <td>{{stavkaF.kolicina * stavkaF.jedinicnaCena}}</td>
+          <td>{{stavkaF.rabat}} %</td>
+          <td>{{stavkaF.osnovicaPDV}}</td>
+          <td>{{stavkaF.procenatPDV}} %</td>
+          <td>{{stavkaF.iznosPDV}}</td>
+          <td>{{stavkaF.iznosStavke}}</td>
+        </tr>
       </tbody>
     </table>
     <hr>
@@ -53,8 +59,48 @@
       </h5>
     </div>
     <hr>
-    <button class="btn btn-success">Dodaj stavku</button>
+    <button id="modalTrigger" type="button" class="btn btn-success" data-toggle="modal" data-target="#stavkaModal">
+      Dodaj stavku
+    </button>
 
+
+    <div id="stavkaModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-success">
+            <h5 class="modal-title text-white">Dodavanje stavke</h5>
+            <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <form #stavkaForma="ngForm" (ngSubmit)="onSubmitStavka(stavkaForma.value)">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="robaId">Roba:</label>
+                <select required class="custom-select" name="robaId" id="robaId" ngModel>
+                  <option *ngFor="let stavka of stavke" [value]="stavka.robaId">{{stavka.robaNaziv}} : {{stavka.cena}} din</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="kolicina">Kolicina</label>
+                <input type="number" required min="1" name="kolicina" class="form-control" id="kolicina" placeholder="Unesite kolicinu"
+                  ngModel>
+              </div>
+              <div class="form-group">
+                <label for="rabat">rabat</label>
+                <input type="number" min="1" max="100" required name="rabat" class="form-control" id="rabat" placeholder="Unesite rabat"
+                  ngModel>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" [disabled]="!stavkaForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+              <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
