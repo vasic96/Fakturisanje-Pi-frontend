@@ -33,24 +33,35 @@
     
 </div>
 
-<form #GrupaRobeForma="ngForm" (ngSubmit)="onSubmitGrupaRobe(GrupaRobeForma.value)">
+<form #RobaForma="ngForm" (ngSubmit)="onSubmitGrupaRobe(RobaForma.value)">
     <div class="modal-body">
        
       <div class="form-group">
           <label for="grupaRobe">Roba: </label>
-          <input type="text" required name="grupaRobe" class="form-control" id="grupaRobe" placeholder="Roba" ngModel>
+          <input type="text" required name="naziv" class="form-control" id="naziv" placeholder="Roba" ngModel>
         </div>
 
-        <div ng-controller="grupaRobe" class="dropdown">
-            <label for="pdv">Grupa Robe</label>
-            <select ng-model="selectedName"  class="form-control" id="grupaRobe.naziv">
-                <option value="grupaRobe.pdv" selected disabled hidden id="grupaRobe">Grupa Robe</option>
-            </select>
-        </div>
+
+        <div class="form-group">
+            <label for="grupaRobe">Grupa Robe:</label>
+            <select required class="custom-select" name="grupaRobeID" id="grupaRobeID" ngModel>
+                <option *ngFor="let grupaRobe of gr" [value]="grupaRobe.id">{{grupaRobe.naziv}}</option>
+              </select>
+          </div>
+
+
+        <div class="form-group">
+            <label for="JedinicaMere">Jedinica Mere:</label>
+            <select required class="custom-select" name="jedinicaMereID" id="jedinicaMereID" ngModel>
+                <option *ngFor="let jedinicaMere of jm" [value]="jedinicaMere.id">{{jedinicaMere.naziv}}</option>
+              </select>
+          </div>
+
+
     
     </div>
     <div class="modal-footer">
-      <button type="submit" [disabled]="!GrupaRobeForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+      <button type="submit" [disabled]="!RobaForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
       <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
     </div>
   </form>

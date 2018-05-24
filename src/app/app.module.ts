@@ -23,6 +23,8 @@ import { CustomFormsModule } from 'ng4-validators';
 import { MyHttpInterceptor } from './my-http-interceptor';
 import { RobaComponent } from './roba/roba.component';
 import { GrupaRobeComponent } from './grupa-robe/grupa-robe.component';
+import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
+import { PdvComponent } from './pdv/pdv.component';
 
 
 
@@ -37,7 +39,9 @@ import { GrupaRobeComponent } from './grupa-robe/grupa-robe.component';
     FaktureListComponent,
     FakturaComponent,
     RobaComponent,
-    GrupaRobeComponent
+    GrupaRobeComponent,
+    JedinicaMereComponent,
+    PdvComponent
   ],
   imports: [
     BrowserModule,

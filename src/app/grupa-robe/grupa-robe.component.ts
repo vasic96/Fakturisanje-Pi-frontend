@@ -62,7 +62,7 @@ export class GrupaRobeComponent implements OnInit {
 
   }
 
-  onSubmitGrupaRobe(grupaRobe,  gru= grupaRobe.preduzeceID = "1"){
+  onSubmitGrupaRobe(grupaRobe,  gru= grupaRobe.preduzeceId = "1"){
     console.log(grupaRobe)
   
     this.grupaRobeService.addGrupaRobe(grupaRobe).subscribe(
