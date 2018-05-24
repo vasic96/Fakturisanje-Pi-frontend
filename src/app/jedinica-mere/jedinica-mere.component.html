@@ -1,0 +1,61 @@
+<br>
+<table class="table">
+  <thead class="thead table-success">
+    <tr>
+      <th>Jedinica Mere</th>
+      <th class="text-right">Brisanje</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let jedinicaMere of jm">
+
+  <td>{{jedinicaMere.naziv}}</td>
+  
+  <td class="text-right">
+   <button (click)="deleteJedinicaMere(jedinicaMere)" class="btn btn-danger">Delete</button>
+  </td>
+</tr>
+
+</tbody>
+</table>
+
+<button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addJedicaMere">
+  Dodavanje Jedinica Mere
+</button>
+  
+<div id="addJedicaMere" class="modal fade" tabindex="1" role="dialog" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header bg-success">
+      <h5 class="modal-title text-white">Jedinica Mere</h5>
+      <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">x</span>
+      </button>
+
+
+
+    </div>
+
+    <form #jmForma="ngForm" (ngSubmit)="onSubmitGrupaRobe(jmForma.value)">
+        <div class="modal-body">
+           
+          <div class="form-group">
+              <label for="jedinicaMere">Jedinica Mere:</label>
+              <input type="text" required name="naziv" class="form-control" id="naziv" placeholder="Naziv Jedinica Mere" ngModel>
+            </div>
+
+            
+                
+
+          
+        
+        </div>
+        <div class="modal-footer">
+          <button type="submit" [disabled]="!jmForma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+          <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+</div>
+</div>
+
+</div>

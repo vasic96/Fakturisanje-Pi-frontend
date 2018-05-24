@@ -62,7 +62,7 @@ export class RobaComponent implements OnInit {
   
     this.robaService.addRoba(roba).subscribe(
       success => {
-        this.allGrupaRobe();
+        this.allRoba();
         $("#RobaForma .close").click()
 
       },
