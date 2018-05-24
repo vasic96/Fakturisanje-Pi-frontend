@@ -9,13 +9,17 @@
   <tbody>
 <tr *ngFor="let roba of r">
   <td>{{roba.naziv}}</td>
- <td class="text-right">
+ 
+  <td class="text-right">
     <button (click)="izbrisiRobu(roba)" class="btn btn-danger">Delete</button>
 
  </td>
 </tr>
+
 </tbody>
 </table>
+
+
 
 <button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#dodavanjeRobe">
   Dodavanje Robe
