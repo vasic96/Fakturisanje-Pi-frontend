@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer } from '@angular/core';
 import { RegistracijaService } from './registracija.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
@@ -18,7 +18,8 @@ export class AppComponent implements OnInit{
     this.loginProvera();
   }
 
-  constructor(private registracijaService: RegistracijaService,private router: Router) {}
+  constructor(private registracijaService: RegistracijaService,private router: Router,
+    private el: ElementRef, private renderer: Renderer) {}
 
   onSubmitLogin(loginData){
     console.log(loginData);
@@ -57,4 +58,10 @@ export class AppComponent implements OnInit{
     }
   }
 
+  onMenuClick() {
+    //this.el.nativeElement.querySelector('.navbar-ex1-collapse')  get the DOM
+    //this.renderer.setElementClass('DOM-Element', 'css-class-you-want-to-add', false) if 3rd value is true 
+    //it will add the css class. 'in' class is responsible for showing the menu, remove it.
+    this.renderer.setElementClass(this.el.nativeElement.querySelector('.navbar-ex1-collapse'), 'in', false);        
+}
 }
