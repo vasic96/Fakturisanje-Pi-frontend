@@ -95,4 +95,17 @@ export class PdvComponent implements OnInit {
     }
 
   }
+
+  deleteStopaPdv(stopaPdv){
+
+    console.log(stopaPdv)
+    if(confirm("stopa Pdv" + stopaPdv.procenat)){
+
+        this.stopaPdvService.deleteStopaPdv(stopaPdv.id).subscribe(
+
+          success => this.allStopaPdv(),
+          error => alert("stopa pdv se ne moze izbrisati")
+        )
+    }
+  }
 }
