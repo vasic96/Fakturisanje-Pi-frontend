@@ -22,6 +22,7 @@
         <th>PDV %</th>
         <th>Ukupan PDV</th>
         <th>Ukupno</th>
+        <th></th>
       </thead>
       <tbody>
         <tr *ngFor="let stavkaF of stavkeFakture">
@@ -34,6 +35,7 @@
           <td>{{stavkaF.procenatPDV}} %</td>
           <td>{{stavkaF.iznosPDV}}</td>
           <td>{{stavkaF.iznosStavke}}</td>
+          <td><button class="btn btn-danger" (click)="izbrisiStavku(stavkaF.id)">X</button></td>
         </tr>
       </tbody>
     </table>

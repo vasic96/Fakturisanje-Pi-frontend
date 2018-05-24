@@ -12,6 +12,7 @@ export class FaktureService {
   dodajFakturuUrl = "http://localhost:8080/api/fakture/add";
   dodajStavkuUrl = "http://localhost:8080/api/stavka_fakture/add";
   stavkePoFakturiUrl = "http://localhost:8080/api/stavka_fakture/faktura/";
+  izbrisiStavkuUrl = "http://localhost:8080/api/stavka_fakture/";
 
   sveFakture(){
     return this._http.get(this.sveFaktureUrl);
@@ -32,6 +33,12 @@ export class FaktureService {
   dajStavkePoFakturi(fakturaId){
 
     return this._http.get(this.stavkePoFakturiUrl + fakturaId);
+
+  }
+
+  izbrisiStavku(id){
+
+    return this._http.delete(this.izbrisiStavkuUrl+id);
 
   }
 

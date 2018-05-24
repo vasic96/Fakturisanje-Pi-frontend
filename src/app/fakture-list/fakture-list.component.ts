@@ -20,13 +20,11 @@ export class FaktureListComponent implements OnInit {
 
   ngOnInit() {
     this.dajSveFakture();
-    this.dajSvaPreduzeca();
     this.dajSveGodine();
     this.dajSvePartnere();
   }
 
   fakture;
-  preduzeca;
   godine;
   partneri;
 
@@ -37,11 +35,6 @@ export class FaktureListComponent implements OnInit {
     )
   }
 
-  dajSvaPreduzeca(){
-    this.preduzeceService.svaPreduzeca().subscribe(
-      data=> this.preduzeca = data
-    )
-  }
 
   dajSvePartnere(){
     this.pPartnerService.sviPartneri().subscribe(

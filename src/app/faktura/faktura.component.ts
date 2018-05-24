@@ -69,5 +69,16 @@ export class FakturaComponent implements OnInit {
     )
   }
 
+  izbrisiStavku(id){
+    if(confirm("Da li zelite da izbrisete stavku?")){
+      this.faktureService.izbrisiStavku(id).subscribe(
+        success=>{
+          this.ucitaj();
+          this.ucitajStavkeFakture();
+        },error => alert("Greska prilikom brisanja stavke fakture")
+      )
+    }
+  }
+
 
 }
