@@ -24,6 +24,7 @@ import { MyHttpInterceptor } from './my-http-interceptor';
 import { RobaComponent } from './roba/roba.component';
 import { GrupaRobeComponent } from './grupa-robe/grupa-robe.component';
 import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
+import { PdvComponent } from './pdv/pdv.component';
 
 
 
@@ -39,7 +40,8 @@ import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
     FakturaComponent,
     RobaComponent,
     GrupaRobeComponent,
-    JedinicaMereComponent
+    JedinicaMereComponent,
+    PdvComponent
   ],
   imports: [
     BrowserModule,

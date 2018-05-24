@@ -43,7 +43,7 @@ export class JedinicaMereComponent implements OnInit {
 
   }
   
-  onSubmitGrupaRobe(jedinicaMere){
+  onSubmitJedinicaMere(jedinicaMere){
     console.log(jedinicaMere)
   
     this.jedinicaMereService.addJedinicaMere(jedinicaMere).subscribe(

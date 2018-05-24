@@ -1,0 +1,22 @@
+<br>
+<table class="table">
+  <thead class="thead table-success">
+    <tr>
+      <th>PDV</th>
+      <th class="text-right">Brisanje</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let pdv of pdv_e">
+
+  <td>{{pdv.naziv}}</td>
+  
+  <td class="text-right">
+   <button (click)="deletePdv(pdv)" class="btn btn-danger">Delete</button>
+  </td>
+</tr>
+
+</tbody>
+</table>
+
+

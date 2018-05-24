@@ -8,6 +8,7 @@ export class PdvService {
 
   constructor(private _http: HttpClient) { }
   allPdvUrl= "http://localhost:8080/api/pdv/all";
+  deletePdvUrl= "http://localhost:8080/api/pdv/delete/"
 
 
 
@@ -15,6 +16,11 @@ export class PdvService {
 
   return this._http.get(this.allPdvUrl);
 
+  }
+
+  deletePdv(id){
+
+    return this._http.delete(this.deletePdvUrl+id);
   }
 
 }

@@ -10,6 +10,7 @@ import { FakturaComponent } from './faktura/faktura.component';
 import { GrupaRobeComponent} from './grupa-robe/grupa-robe.component'
 import { RobaComponent } from './roba/roba.component';
 import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
+import { PdvComponent } from './pdv/pdv.component';
 
 const routes: Routes = [
   {path: 'registracija',component:RegistracijaComponent},
@@ -22,7 +23,9 @@ const routes: Routes = [
   {path: 'fakture/:id',component:FakturaComponent},
   {path:'grupaRobe', component:GrupaRobeComponent},
   {path: 'roba', component:RobaComponent},
-  {path: 'jedinicaMere', component: JedinicaMereComponent }
+  {path: 'jedinicaMere', component: JedinicaMereComponent },
+  {path: 'pdv', component: PdvComponent}
+
 ];
 
 @NgModule({
