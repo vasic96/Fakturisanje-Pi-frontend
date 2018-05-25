@@ -4,6 +4,7 @@ import { PreduzeceService } from '../preduzece.service';
 import { PoslovnaGodinaService } from '../poslovna-godina.service';
 import { PoslovniPartnerService } from '../poslovni-partner.service';
 import * as $ from 'jquery';
+import { LoginProveraService } from '../login-provera.service';
 
 
 @Component({
@@ -16,17 +17,22 @@ export class FaktureListComponent implements OnInit {
   constructor(private faktureService: FaktureService,
               private preduzeceService: PreduzeceService,
               private pGodinaService: PoslovnaGodinaService,
-              private pPartnerService: PoslovniPartnerService) { }
+              private pPartnerService: PoslovniPartnerService,
+              private loginProveraService: LoginProveraService) { }
 
   ngOnInit() {
+    this.ulogovan = this.loginProveraService.loginProvera();
+   if(this.ulogovan){
     this.dajSveFakture();
     this.dajSveGodine();
     this.dajSvePartnere();
+   }
   }
 
   fakture;
   godine;
   partneri;
+  ulogovan;
 
   dajSveFakture(){
     this.faktureService.sveFakture().subscribe(

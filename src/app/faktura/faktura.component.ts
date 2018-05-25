@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FaktureService } from '../fakture.service';
 import { StavkeCenovnikaService } from '../stavke-cenovnika.service';
 import * as $ from 'jquery';
+import { LoginProveraService } from '../login-provera.service';
 
 
 @Component({
@@ -14,19 +15,23 @@ export class FakturaComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private faktureService: FaktureService,
-              private stavkeService: StavkeCenovnikaService) { }
+              private stavkeService: StavkeCenovnikaService,
+              private loginProveraService: LoginProveraService) { }
   
   fakturaId;
   faktura;
   done = false;
   stavke;
   stavkeFakture;
+  ulogovan;
 
   ngOnInit() {
     this.fakturaId = this.route.snapshot.paramMap.get('id');
     this.ucitaj();
     this.ucitajStavke();
     this.ucitajStavkeFakture();
+    this.ulogovan = this.loginProveraService.loginProvera();
+    console.log(this.ulogovan);
     
   }
 

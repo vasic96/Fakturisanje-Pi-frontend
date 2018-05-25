@@ -25,6 +25,7 @@ import { RobaComponent } from './roba/roba.component';
 import { GrupaRobeComponent } from './grupa-robe/grupa-robe.component';
 import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
 import { PdvComponent } from './pdv/pdv.component';
+import { LoginProveraService } from './login-provera.service';
 
 
 
@@ -57,7 +58,7 @@ import { PdvComponent } from './pdv/pdv.component';
                     provide: HTTP_INTERCEPTORS,
                     useClass: MyHttpInterceptor,
                     multi: true
-                  }],
+                  },LoginProveraService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

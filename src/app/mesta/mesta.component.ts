@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MestoService } from '../mesto.service';
 import * as $ from 'jquery';
+import { LoginProveraService } from '../login-provera.service';
 
 
 @Component({
@@ -13,15 +14,18 @@ import * as $ from 'jquery';
 
 export class MestaComponent implements OnInit {
   element;
-  constructor(private mestoService: MestoService) { }
+  constructor(private mestoService: MestoService,
+              private loginProveraService: LoginProveraService) { }
 
   ngOnInit() {
     this.dajSvaMesta();
+    this.ulogovan = this.loginProveraService.loginProvera();
   }
 
   mesta;
   editMesto;
   moze=false;
+  ulogovan;
 
   dajSvaMesta(){
     this.mestoService.svaMesta().subscribe(

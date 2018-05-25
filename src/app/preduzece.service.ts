@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class PreduzeceService {
 
   constructor(private _http: HttpClient) { }
-  svaPreduzecaUrl = "http://localhost:8080/api/preduzece/all";
+  svaPreduzecaUrl = "http://localhost:8080/open/preduzece/all";
 
   svaPreduzeca(){
     return this._http.get(this.svaPreduzecaUrl);

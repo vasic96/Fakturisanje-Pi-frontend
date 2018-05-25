@@ -11,28 +11,28 @@
             <span class="sr-only"></span>
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="logedIn" class="nav-item">
           <a class="nav-link" href="#">Poslovni Partneri</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/fakture">Fakture</a>
+        <li *ngIf="logedIn" class="nav-item">
+          <a *ngIf="logedIn" class="nav-link" href="/fakture">Fakture</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/mesta" href="#">Mesto</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="logedIn" class="nav-item">
           <a class="nav-link" href="/jedinicaMere">Jedinica Mere</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="logedIn" class="nav-item">
           <a class="nav-link" routerLink="/cenovnik" shref="#">Cenovnik</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="logedIn" class="nav-item">
           <a class="nav-link" href="#">Stavke Cenovnika</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="logedIn" class="nav-item">
           <a class="nav-link" href="/roba">Roba</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="logedIn" class="nav-item">
           <a class="nav-link" href="/grupaRobe">Grupa Robe</a>
         </li>
         <li class="nav-item">
@@ -41,10 +41,20 @@
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/pdv">Pdv</a>
-
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+          <li *ngIf="logedIn">
+              <div class="dropdown">
+                <button class="btn btn-outline-success my-2 my-sm-0 btn1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" (click)="openEditPwdModal()">Promena lozinke</a>
+                  <a class="dropdown-item" >Promena podataka</a>
+                </div>
+              </div>
+            </li>
         <li *ngIf="!logedIn" class="nav-item">
           <button class="btn btn-outline-success my-2 my-sm-0 btn1" data-toggle="modal" data-target="#loginModal">Prijava</button>
         </li>
@@ -65,7 +75,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-success">
-            <h5 class="modal-title text-white">Novo mesto</h5>
+            <h5 class="modal-title text-white">Prijava</h5>
             <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -85,6 +95,42 @@
           <div class="modal-footer">
               <button type="submit" [disabled]="!loginForma.form.valid" class="btn btn-primary mr-auto">Login</button>
               <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+    <button data-toggle="modal" hidden="true" data-target="#editPasswordModal" #openEditPasswordModal id="openEditPasswordModal"></button>
+
+    <div id="editPasswordModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-success">
+            <h5 class="modal-title text-white">Izmena sifre</h5>
+            <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <form #editPasswordForma="ngForm" (ngSubmit)="onSubmitEditPassword(editPasswordForma.value)">
+          <div class="modal-body">            
+              <div class="form-group">
+                <label for="oldPassword">Stara sifra</label>
+                <input type="password" required minlength="5" maxlength="15" name="oldPassword" class="form-control" id="oldPassword"  ngModel>
+              </div>
+              <div class="form-group">
+                <label for="password">Nova sifra</label>
+                <input type="password" required minlength="5" maxlength="15" name="password" #password1="ngModel" class="form-control" id="password1"  ngModel>
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Potvrdi novu sifru</label>
+                <input type="password" required minlength="5" maxlength="15" name="confirmPassword" [equalTo]="password1" class="form-control" id="confirmPassword" ngModel>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="submit" [disabled]="!editPasswordForma.form.valid" class="btn btn-primary mr-auto">Izmeni</button>
+              <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Zatvori</button>
             </div>
         </form>
         </div>

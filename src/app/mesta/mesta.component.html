@@ -13,8 +13,8 @@
       <td>{{mesto.grad}}</td>
       <td class="text-center">{{mesto.drzava}}</td>
       <td class="text-right">                    
-        <div class="dropdown">
-          <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown" >
+          <button [disabled]="!ulogovan"class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Opcije
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
