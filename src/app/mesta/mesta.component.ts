@@ -2,22 +2,26 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MestoService } from '../mesto.service';
 import * as $ from 'jquery';
 
+
 @Component({
   selector: 'app-mesta',
   templateUrl: './mesta.component.html',
   styleUrls: ['./mesta.component.css']
 })
 
-export class MestaComponent implements OnInit {
 
+
+export class MestaComponent implements OnInit {
+  element;
   constructor(private mestoService: MestoService) { }
 
   ngOnInit() {
     this.dajSvaMesta();
   }
-  @ViewChild('mestoModal') public modal;
 
   mesta;
+  editMesto;
+  moze=false;
 
   dajSvaMesta(){
     this.mestoService.svaMesta().subscribe(
@@ -32,6 +36,7 @@ export class MestaComponent implements OnInit {
       success => {
         this.dajSvaMesta();
         $("#mestoModal .close").click()
+        $("#mestoForma").reset();
       },
       error => {
         alert("Greska u dodavanju mesta");
@@ -46,6 +51,28 @@ export class MestaComponent implements OnInit {
         error => alert("Nije moguce izbrisati mesto!")
       )
     }
+  }
+
+  showEditModal(mesto){
+    this.editMesto = mesto;
+    this.moze = true;
+    $("#openModal").click();
+
+  }
+
+  onSubmitMestoEdit(mesto){
+    mesto.id = this.editMesto.id;
+    console.log(mesto + "edited");
+    if(confirm("Zelite li da izmenite mesto?")){
+    this.mestoService.izmeniMesto(mesto).subscribe(
+      success=> {
+        console.log("Uspesno izmenjeno mesto");
+        $("#editModal .close").click();
+        this.dajSvaMesta();
+      },
+      error=> alert("Greska prilikom menjanja mesta")
+    )
+  }
   }
 
 }

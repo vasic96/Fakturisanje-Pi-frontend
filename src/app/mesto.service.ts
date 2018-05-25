@@ -9,8 +9,9 @@ export class MestoService {
 
   constructor(private _http: HttpClient) { }
   svaMestaUrl = "http://localhost:8080/open/mesto/all";
-  dodajMestoUrl = "http://localhost:8080/api/mesto/add";
-  izbrisiMestoUrl = "http://localhost:8080/api/mesto/izbrisi/";
+  dodajMestoUrl = "http://localhost:8080/open/mesto/add";
+  izbrisiMestoUrl = "http://localhost:8080/api/mesto/delete/";
+  izmeniMestoUrl = "http://localhost:8080/api/mesto/update/"
   svaMesta(){
     return this._http.get(this.svaMestaUrl);
   }
@@ -21,6 +22,10 @@ export class MestoService {
 
   izbrisiMesto(id){
     return this._http.delete(this.izbrisiMestoUrl + id);
+  }
+
+  izmeniMesto(mesto){
+    return this._http.put(this.izmeniMestoUrl + mesto.id,mesto);
   }
 
 }
