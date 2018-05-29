@@ -56,6 +56,7 @@ export class AppComponent implements OnInit {
   odjava() {
     this.registracijaService.logOut().subscribe(data => {
       localStorage.clear();
+      alert("logout successful")
       this.logedIn = false;
       this.router.navigate['/preduzeca'];
     });
