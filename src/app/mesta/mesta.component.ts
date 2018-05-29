@@ -23,8 +23,11 @@ export class MestaComponent implements OnInit {
   }
 
   mesta;
-  editMesto;
-  moze=false;
+  editMesto = {
+    id:0,
+    grad: "",
+    drzava:""
+  };
   ulogovan;
 
   dajSvaMesta(){
@@ -59,7 +62,6 @@ export class MestaComponent implements OnInit {
 
   showEditModal(mesto){
     this.editMesto = mesto;
-    this.moze = true;
     $("#openModal").click();
 
   }
