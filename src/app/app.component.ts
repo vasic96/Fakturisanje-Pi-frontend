@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { LoginProveraService } from './login-provera.service';
 import { MestoService } from './mesto.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -74,7 +75,7 @@ export class AppComponent implements OnInit {
 
 
 
-  onSubmitEditPassword(passwords) {
+  onSubmitEditPassword(passwords,form: NgForm) {
     if (confirm("Da li ste sigurni da zelite da promenite lozinku?")) {
       this.registracijaService.izmenaSifre(passwords).subscribe(
         success => {
@@ -85,6 +86,10 @@ export class AppComponent implements OnInit {
       )
     }
 
+  }
+
+  clearForm(form: NgForm){
+    form.resetForm();
   }
 
   onSubmitEditInfo(editInfoForm) {
