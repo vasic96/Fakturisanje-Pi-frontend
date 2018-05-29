@@ -20,4 +20,11 @@ export class LoginProveraService {
 
     }
   }
+
+  getLogedInUserEmail(){
+    var currentUser = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
+    if(this.loginProvera()){
+      return currentUser.user;
+    }
+  }
 }

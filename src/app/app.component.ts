@@ -3,6 +3,7 @@ import { RegistracijaService } from './registracija.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { LoginProveraService } from './login-provera.service';
+import { MestoService } from './mesto.service';
 
 
 @Component({
@@ -11,19 +12,31 @@ import { LoginProveraService } from './login-provera.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'app';
   logedIn;
+  mesta;
+  email;
+  preduzece;
+  showEditModal=false;
 
-  ngOnInit(){
+  ngOnInit() {
     this.logedIn = this.loginProveraService.loginProvera();
+    if(this.logedIn){
+      this.email  = this.loginProveraService.getLogedInUserEmail();
+      this.getMyInfo();
+    }
+    this.mestoService.svaMesta().subscribe(
+      success => this.mesta = success
+    )
   }
 
-  constructor(private registracijaService: RegistracijaService,private router: Router,
+  constructor(private registracijaService: RegistracijaService, private router: Router,
     private el: ElementRef, private renderer: Renderer,
-    private loginProveraService: LoginProveraService) {}
+    private loginProveraService: LoginProveraService,
+    private mestoService: MestoService) { }
 
-  onSubmitLogin(loginData){
+  onSubmitLogin(loginData) {
     console.log(loginData);
 
     this.registracijaService.login(loginData).subscribe(
@@ -34,48 +47,70 @@ export class AppComponent implements OnInit{
         this.logedIn = true;
         $("#loginModal .close").click()
       },
-      error=> alert("Pogresan email ili lozinka!")
+      error => alert("Pogresan email ili lozinka!")
     )
 
   }
 
-  odjava(){
-   this.registracijaService.logOut().subscribe(data => {
-    localStorage.clear();
-    this.logedIn = false;
-    this.router.navigate['/preduzeca'];
-   });
-
-
-  }
-
-  loginProvera() {
-
-    var currentUser = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
-    if (currentUser == undefined) {
+  odjava() {
+    this.registracijaService.logOut().subscribe(data => {
+      localStorage.clear();
       this.logedIn = false;
-      console.log("Nije ulogovan");
+      this.router.navigate['/preduzeca'];
+    });
 
-    } else if (currentUser) {
-      this.logedIn = true;
-      console.log(currentUser);
 
-    }
   }
 
-  onSubmitEditPassword(passwords){
-    if(confirm("Da li ste sigurni da zelite da promenite lozinku?")){
+  getMyInfo(){
+    this.registracijaService.myInfo().subscribe(
+      success => {
+        this.preduzece = success
+        this.showEditModal=true;
+        console.log(this.preduzece);
+      }
+    )
+  }
+
+
+
+  onSubmitEditPassword(passwords) {
+    if (confirm("Da li ste sigurni da zelite da promenite lozinku?")) {
       this.registracijaService.izmenaSifre(passwords).subscribe(
-        success=> {
+        success => {
           alert("Lozinka uspesno promenjena!");
           this.odjava();
-        }
+        },
+        error=> alert("Morate uneti ispravnu trenutnu lozinku!")
       )
     }
 
   }
 
-  openEditPwdModal(){
+  onSubmitEditInfo(editInfoForm) {
+    console.log(editInfoForm);
+    if(confirm("Da li ste sigurni da zelite da izmenite podatke o preduzecu?")){
+      this.registracijaService.izmenaPodataka(editInfoForm).subscribe(
+        success=> {
+          alert("Podaci uspesno izmenjeni!");
+          this.odjava();
+        }, error=> {
+          if(error.status === 401){
+            alert("Morate uneti ispravnu lozinku")
+          } 
+          if(error.status===404){
+            alert("Email adresa vec postoji")
+          } else{
+            console.log(error);
+          }
+        }
+      )
+    }
+  }
+  editInfoModalOepn() {
+    $("#openEditInfoModal").click();
+  }
+  openEditPwdModal() {
     $("#openEditPasswordModal").click();
   }
 
@@ -83,6 +118,6 @@ export class AppComponent implements OnInit{
     //this.el.nativeElement.querySelector('.navbar-ex1-collapse')  get the DOM
     //this.renderer.setElementClass('DOM-Element', 'css-class-you-want-to-add', false) if 3rd value is true 
     //it will add the css class. 'in' class is responsible for showing the menu, remove it.
-    this.renderer.setElementClass(this.el.nativeElement.querySelector('.navbar-ex1-collapse'), 'in', false);        
-}
+    this.renderer.setElementClass(this.el.nativeElement.querySelector('.navbar-ex1-collapse'), 'in', false);
+  }
 }

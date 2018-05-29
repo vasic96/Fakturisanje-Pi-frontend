@@ -12,6 +12,7 @@ export class RegistracijaService {
   loginUrl = "http://localhost:8080/login";
   urlLogout = "http://localhost:8080/logout";
   izmenaSifreUrl = "http://localhost:8080/api/change-password"
+  izmenaPodatakaUrl = "http://localhost:8080/api/change-info"
 
 
   registracija(preduzece){
@@ -31,6 +32,13 @@ export class RegistracijaService {
   izmenaSifre(passwords){
     return this._http.put(this.izmenaSifreUrl,passwords);
   }
+
+  izmenaPodataka(preduzece){
+    return this._http.put(this.izmenaPodatakaUrl,preduzece);
+  }
   
+  myInfo(){
+    return this._http.get("http://localhost:8080/api/my-info");
+  }
 
 }
