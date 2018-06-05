@@ -2,8 +2,8 @@
 <br>
 
 <div *ngIf="ulogovan">
-<div class="card" *ngIf="done">
-  <div class="card-header d-flex w-100 justify-content-between bg-success">
+<div class="card custom-card" *ngIf="done">
+  <div class="card-header d-flex w-100 justify-content-between" [style.backgroundColor]="'#66BB6A'">
     <h4 class="text-white">Br fakture: {{faktura.id}}.</h4>
     <h5 class="text-center text-white">{{faktura.poslovnaGodina}}</h5>
     <h5 class="text-right text-white">{{faktura.datumFakture}}</h5>
@@ -35,33 +35,33 @@
           <td>{{stavkaF.procenatPDV}} %</td>
           <td>{{stavkaF.iznosPDV}}</td>
           <td>{{stavkaF.iznosStavke}}</td>
-          <td><button class="btn btn-danger" (click)="izbrisiStavku(stavkaF.id)">X</button></td>
+          <td><button class="btn btn-outline-danger" (click)="izbrisiStavku(stavkaF.id)">X</button></td>
         </tr>
       </tbody>
     </table>
     <hr>
     <div class="d-flex w-100 justify-content-between">
       <h5>{{faktura.poslovniPartnerNaziv}} &nbsp;&nbsp;
-        <span class="badge badge-success">Poslovni partner</span>
+        <span class="badge custom-badge">Poslovni partner</span>
       </h5>
       <h5 class="text-right">{{faktura.datumValute}} &nbsp;&nbsp;
-        <span class="badge badge-success">Datum valute</span>
+        <span class="badge custom-badge">Datum valute</span>
       </h5>
     </div>
     <hr>
     <div class="d-flex w-100 justify-content-between">
       <h5>{{faktura.osnovica}} &nbsp;&nbsp;
-        <span class="badge badge-success">Osnovica</span>
+        <span class="badge custom-badge">Osnovica</span>
       </h5>
       <h5 class="text-center">{{faktura.ukupanPDV}} &nbsp;&nbsp;
-        <span class="badge badge-success">Ukupan PDV</span>
+        <span class="badge custom-badge">Ukupan PDV</span>
       </h5>
       <h5 class="text-right">{{faktura.iznosZaPlacanje}} &nbsp;&nbsp;
-        <span class="badge badge-success">Ukupan iznos</span>
+        <span class="badge custom-badge">Ukupan iznos</span>
       </h5>
     </div>
     <hr>
-    <button id="modalTrigger" type="button" class="btn btn-success" data-toggle="modal" data-target="#stavkaModal">
+    <button id="modalTrigger" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#stavkaModal">
       Dodaj stavku
     </button>
 
