@@ -48,7 +48,7 @@
                 Opcije
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/fakture/{{faktura.id}}">Detalji i stavke</a>
+                <a class="dropdown-item" routerLink="/fakture/{{faktura.id}}">Detalji i stavke</a>
                 <a class="dropdown-item" >Stampaj</a>
                 <a class="dropdown-item" (click)="izbrisiFakturu(faktura.id)">Izbrisi</a>
               </div>
