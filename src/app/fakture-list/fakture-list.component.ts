@@ -5,6 +5,7 @@ import { PoslovnaGodinaService } from '../poslovna-godina.service';
 import { PoslovniPartnerService } from '../poslovni-partner.service';
 import * as $ from 'jquery';
 import { LoginProveraService } from '../login-provera.service';
+import { FakturaPage } from './Faktura';
 
 
 @Component({
@@ -23,22 +24,42 @@ export class FaktureListComponent implements OnInit {
   ngOnInit() {
     this.ulogovan = this.loginProveraService.loginProvera();
    if(this.ulogovan){
-    this.dajSveFakture();
+    this.direction = 'ASC';
+    this.order = 'iznosZaPlacanje';
+    this.currentPage = 1;
+    this.numPerPage = 6;
+    this.dajSveFakture(this.currentPage);
     this.dajSveGodine();
     this.dajSvePartnere();
+    
    }
   }
-
+  private pageInfo : FakturaPage;
   fakture;
   godine;
   partneri;
   ulogovan;
+  direction;
+  currentPage:number;
+  order;
+  numPerPage:number;
 
-  dajSveFakture(){
-    this.faktureService.sveFakture().subscribe(
-      data => this.fakture = data,
+  dajSveFakture(page){
+    console.log("Daj sve fakture called");
+    this.faktureService.sveFakture(page,this.order,this.direction,this.numPerPage).subscribe(
+      data => {
+        this.fakture = data.content;
+        this.pageInfo = data;
+        console.log(data);
+      },
       error => alert("Greska prilikom ucitavanja faktura")
     )
+  }
+
+  radioButtonClick(direction){
+    console.log(direction);
+    this.direction=direction;
+    this.dajSveFakture(this.currentPage);
   }
 
 
@@ -58,7 +79,7 @@ export class FaktureListComponent implements OnInit {
     console.log(faktura);
     this.faktureService.dodajFakturu(faktura).subscribe(
       success => {
-        this.dajSveFakture();
+        this.dajSveFakture(1);
         $("#mestoModal .close").click();
       },
       error=> alert(error)
@@ -68,10 +89,27 @@ export class FaktureListComponent implements OnInit {
   izbrisiFakturu(id){
     if(confirm("Da li zelite da izbrisete fakturu?")){
       this.faktureService.izbrisiFakturu(id).subscribe(
-        success => this.dajSveFakture(),
+        success => this.dajSveFakture(1),
         error => alert("Greska prilikom brisanja fakture")
       )
     }
   }
+
+  selectOrder(value){
+    console.log(value);
+    this.order = value;
+    this.dajSveFakture(this.currentPage);
+  }
+
+  changePage(pageNum:number){
+    this.currentPage+=pageNum;
+    this.dajSveFakture(this.currentPage);
+  }
+
+  selectNumOfPages(num:number){
+    this.numPerPage=num;
+    this.dajSveFakture(this.currentPage);
+  }
+
 
 }

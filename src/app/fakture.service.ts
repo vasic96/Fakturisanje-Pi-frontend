@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FakturaPage } from './fakture-list/Faktura';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class FaktureService {
   izbrisiStavkuUrl = "http://localhost:8080/api/stavka_fakture/";
   izbrisiFakturuUrl = "http://localhost:8080/api/fakture/";
 
-  sveFakture(){
-    return this._http.get(this.sveFaktureUrl);
+  sveFakture(page,order,direction,size){
+    return this._http.get<FakturaPage>('http://localhost:8080/api/fakture/all?page='+ page + '&direction='+ direction +'&order=' + order + '&size=' + size);
   }
 
   dodajFakturu(faktura){

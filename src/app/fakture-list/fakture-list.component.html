@@ -1,5 +1,29 @@
 <br>
 <div *ngIf="ulogovan">
+
+
+    <div class="row">
+        <select class="form-control col-md-8 form-group" style="display: inline;" (change)="selectOrder($event.target.value)">
+            <option value="iznosZaPlacanje">Iznos za placanje</option>
+            <option value="datumFakture">Datum fakture</option>
+            <option value="datumValute">Datum valute</option>
+            <option value="poslovniPartner">Poslovni partner</option>
+            <option value="poslovnaGodina">Poslovna godina</option>
+          </select>
+          
+          <select class="form-control col-md-1 text-right form-group" style="display: inline;" (change)="selectNumOfPages($event.target.value)">
+              <option value="3">3</option>
+              <option selected value="6">6</option>
+              <option value="9">9</option>
+              <option value="12">12</option>
+          </select>
+    <div style="display: inline;" class="col-md-2 text-right">
+      <label class="radio-inline"><input type="radio" (click)="radioButtonClick('ASC')" checked name="optradio">ASC</label> &nbsp;&nbsp;
+      <label class="radio-inline"><input type="radio" (click)="radioButtonClick('DESC')" name="optradio">DESC</label>
+    </div>
+  </div>
+
+  <br>
 <table class="table">
   <thead class="thead table-success">
     <tr>
@@ -37,6 +61,20 @@
   </tbody>
 </table>
 
+<br>
+<br>
+
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="pageInfo.first">
+      <a (click)="changePage(-1)" class="page-link" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item active"><a class="page-link">{{currentPage}}</a></li>
+    <li class="page-item" [class.disabled]="pageInfo === undefined || pageInfo.last">
+      <a (click)="changePage(1)" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
 
 <button id="modalTrigger" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#mestoModal">
   Nova faktura
