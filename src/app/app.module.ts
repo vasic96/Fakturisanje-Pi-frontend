@@ -26,6 +26,7 @@ import { GrupaRobeComponent } from './grupa-robe/grupa-robe.component';
 import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
 import { PdvComponent } from './pdv/pdv.component';
 import { LoginProveraService } from './login-provera.service';
+import { PoslovniPartnerComponent } from './poslovni-partner/poslovni-partner.component';
 
 
 
@@ -42,7 +43,8 @@ import { LoginProveraService } from './login-provera.service';
     RobaComponent,
     GrupaRobeComponent,
     JedinicaMereComponent,
-    PdvComponent
+    PdvComponent,
+    PoslovniPartnerComponent
   ],
   imports: [
     BrowserModule,

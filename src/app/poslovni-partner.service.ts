@@ -8,12 +8,19 @@ export class PoslovniPartnerService {
 
   constructor(private _http: HttpClient) { }
 
-  poslovniPartneriUrl = "http://localhost:8080/api/poslovni_partner/all";
+  sviPP_url = "http://localhost:8080/api/poslovni_partner/all";
+  dodajPP_url = "http://localhost:8080/api/poslovni_partner/add";
+  izbrisiPP_url = "http://localhost:8080/api/poslovni_partner/delete";
 
   sviPartneri(){
-    return this._http.get(this.poslovniPartneriUrl);
+    return this._http.get(this.sviPP_url);
   }
 
+  dodajPP(pp){
+    return this._http.get(this.dodajPP_url, pp);
+  }
 
-
+  izbrisiPP(id){
+    return this._http.get(this.izbrisiPP_url + id);
+  }
 }

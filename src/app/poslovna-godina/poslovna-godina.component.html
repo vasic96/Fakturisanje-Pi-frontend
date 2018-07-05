@@ -41,12 +41,14 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="datumVazenja">Godina:</label>
-            <input type="text" required name="godina" class="form-control" id="godina" placeholder="Godina" ngModel>
+            <input type="number" required name="godina" class="form-control" id="godina" [min]="1970" [max]="2050" placeholder="Godina" ngModel>
           </div>
         
-          <div class="form-group">
-            <label for="zakljucena">Zakljucena:</label>
-            <input type="text" required name="zakljucena" class="form-control" id="zakljucena" placeholder="Zakljucena" ngModel>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="zakljucena" ngModel>
+            <label class="form-check-label" for="defaultCheck1">
+              Zakljucena
+            </label>
           </div>
       </div>
       <div class="modal-footer">

@@ -11,6 +11,7 @@ export class CenovnikService {
   sviCenovniciUrl = "http://localhost:8080/api/cenovnik/all";
   dodajCenovnikUrl = "http://localhost:8080/api/cenovnik/add";
   izbrisiCenovnikUrl = "http://localhost:8080/api/cenovnik/delete/";
+  
   sviCenovnici(){
     return this._http.get(this.sviCenovniciUrl);
   }

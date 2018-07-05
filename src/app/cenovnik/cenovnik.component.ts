@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CenovnikService } from '../cenovnik.service';
 import * as $ from 'jquery';
+import { PreduzeceService } from '../preduzece.service';
 
 @Component({
   selector: 'app-cenovnik',
@@ -10,14 +11,24 @@ import * as $ from 'jquery';
 
 export class CenovnikComponent implements OnInit {
 
-  constructor(private cenovnikService: CenovnikService) { }
+  constructor(private cenovnikService: CenovnikService, private preduzeceService: PreduzeceService) { }
 
   ngOnInit() {
     this.dajSveCenovnike();
+    this.uzmiPreduzeca();
   }
+
   @ViewChild('cenovnikModal') public modal;
 
   cenovnici;
+  preduzeca;
+
+  uzmiPreduzeca(){
+    this.preduzeceService.svaPreduzeca().subscribe(
+      success=> this.preduzeca = success,
+      error => alert("Nemere ucitati preduzeca")
+    )
+  }
 
   dajSveCenovnike(){
     this.cenovnikService.sviCenovnici().subscribe(

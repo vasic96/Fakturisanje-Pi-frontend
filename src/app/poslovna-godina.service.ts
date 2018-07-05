@@ -10,7 +10,7 @@ export class PoslovnaGodinaService {
   constructor(private _http: HttpClient) { }
   svePoslovneGodineUrl = "http://localhost:8080/api/pgodina/all";
   dodajPoslovnuGodinuUrl = "http://localhost:8080/api/pgodina/add";
-  izbrisiPoslovnuGodinuUrl = "http://localhost:8080/api/pgodina/delete/";
+  izbrisiPoslovnuGodinuUrl = "http://localhost:8080/api/pgodina/remove/";
   svePoslovneGodine(){
     return this._http.get(this.svePoslovneGodineUrl);
   }

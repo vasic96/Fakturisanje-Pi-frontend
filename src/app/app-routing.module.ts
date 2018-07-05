@@ -5,6 +5,7 @@ import { MestaComponent } from './mesta/mesta.component';
 import { PreduzeceListComponent } from './preduzece-list/preduzece-list.component';
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { PoslovnaGodinaComponent } from './poslovna-godina/poslovna-godina.component';
+import { PoslovniPartnerComponent } from './poslovni-partner/poslovni-partner.component';
 import { FaktureListComponent } from './fakture-list/fakture-list.component';
 import { FakturaComponent } from './faktura/faktura.component';
 import { GrupaRobeComponent} from './grupa-robe/grupa-robe.component'
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'preduzeca',component:PreduzeceListComponent},
   {path:'cenovnik',component:CenovnikComponent},
   {path: 'poslovna_godina',component:PoslovnaGodinaComponent},
+  {path: 'poslovni_partner',component:PoslovniPartnerComponent},
   {path: 'fakture',component:FaktureListComponent},
   {path: '',redirectTo:'/preduzeca',pathMatch:'full'},
   {path: 'fakture/:id',component:FakturaComponent},

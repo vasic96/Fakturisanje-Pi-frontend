@@ -1,0 +1,87 @@
+<br>
+<table class="table">
+  <thead class="thead table-success">
+    <tr>
+      <th>Naziv</th>
+      <th>Adresa</th>
+      <th>Vrsta</th>
+      <th class="text-center">Mesto</th>
+      <th class="text-center">Preduzece</th>
+      <th class="text-right">Brisanje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pp of poslovniPartneri">
+      <td>{{pp.naziv}}</td>
+      <td>{{pp.adresa}}</td>
+      <td>{{pp.vrsta}}</td>
+      <td class="text-center">{{pp.mestoId}}</td>
+      <td class="text-center">{{pp.preduzeceId}}</td>
+      <td class="text-right">
+        <button (click)="izbrisiPP(pp)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+<hr>
+<br>
+
+<button id="modalTrigger" type="button" class="btn btn-primary" data-toggle="modal" data-target="#poslovniPartnerModal">
+  Dodavanje Poslovnog Partnera
+</button>
+
+<!-- Modal -->
+<div id="poslovniPartnerModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-white">Novi Poslovni Partner</h5>
+        <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form #PPforma="ngForm" (ngSubmit)="onSubmitPP(PPforma.value)">
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="naziv">Naziv</label>
+            <input type="text" required name="naziv" class="form-control" id="naziv" placeholder="Naziv Poslovnog Partnera" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label for="adresa">Adresa</label>
+            <input type="text" required name="adresa" class="form-control" id="adresa" placeholder="Adresa Poslovnog Partnera" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label for="vrsta">Vrsta</label>
+            <input type="text" required name="vrsta" class="form-control" id="vrsta" placeholder="Vrsta Poslovnog Partnera" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label for="preduzeceId">Preduzece</label>
+            <select required class="custom-select" name="preduzeceIme" id="robaId" ngModel>
+              <option *ngFor="let preduzece of preduzeca" [value]="preduzece.id">{{preduzece.naziv}}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mestoId">Mesto</label>
+            <select required class="custom-select" name="mestoId" id="robaId" ngModel>
+              <option *ngFor="let mesto of mesta" [value]="mesto.id">{{mesto.grad}}
+            </select>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" [disabled]="!PPforma.form.valid" class="btn btn-primary mr-auto">Dodaj</button>
+          <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
