@@ -67,11 +67,11 @@
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item" [class.disabled]="pageInfo.first">
-      <a (click)="changePage(-1)" class="page-link" tabindex="-1">Previous</a>
+      <a (click)="changePage(-1)" class="page-link btn btn-primary" tabindex="-1">Previous</a>
     </li>
     <li class="page-item active"><a class="page-link">{{currentPage}}</a></li>
     <li class="page-item" [class.disabled]="pageInfo === undefined || pageInfo.last">
-      <a (click)="changePage(1)" class="page-link">Next</a>
+      <a (click)="changePage(1)" class="page-link btn-outline-primary">Next</a>
     </li>
   </ul>
 </nav>

@@ -17,7 +17,7 @@ export class PoslovniPartnerService {
   }
 
   dodajPP(pp){
-    return this._http.get(this.dodajPP_url, pp);
+    return this._http.post(this.dodajPP_url, pp);
   }
 
   izbrisiPP(id){
